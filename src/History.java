@@ -6,4 +6,5 @@
  * Copyright: MIT
  */
 public class History {
+    //the idea is to make a textfile which tracks the actions and changes made into accounts, clients, staff and loans.
 }
