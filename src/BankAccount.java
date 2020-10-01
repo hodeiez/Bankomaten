@@ -17,5 +17,10 @@ public class BankAccount implements IPrintable{
     public String printable(){
         return "Account balance: " + balance + " Interest Rate: " + interestRate;
     }
-
+    public double getBalance(){
+        return this.balance;
+    }
+    public void setBalance(double newBalance){
+        this.balance=newBalance;
+    }
 }

@@ -8,9 +8,14 @@ import java.util.List;
  * Copyright: MIT
  */
 public class Tools {
-    public void takeOutMoney(double amountOut, BankClient bankClient,int index){
+    public double takeOutMoney(double amountOut, BankClient bankClient,int index){
         List<BankAccount> list=bankClient.getBankAccountList();
-        list.get(index);
-
+        double balance=list.get(index).getBalance();
+        if(balance-amountOut>=0) {
+            list.get(index).setBalance(balance - amountOut);
+            return balance - amountOut;
+        }
+        else
+            return -1;
     }
 }
