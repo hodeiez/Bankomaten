@@ -11,53 +11,78 @@ import java.util.Objects;
  * Copyright: MIT
  */
 public class SimDataBase {
-    //here the objects will be made.
-    ArrayList<Person> bankClientList;
-    List<BankStaff> bankStaffList;
 
+    private static ArrayList<BankClient> bankClientList;
+    private static ArrayList<BankStaff> bankStaffList;
 
-
-    public ArrayList<Person> getBankClientList(){
+    public static ArrayList<BankClient> getBankClientList() {
         return bankClientList;
     }
-    public void addBankClientToDb(BankClient bankClient){
+
+    public void addBankClientToDb(BankClient bankClient) {
         bankClientList.add(bankClient);
     }
-    public void addBankStaffToDb(BankStaff bankStaff){
-        bankStaffList.add(bankStaff);
-    }
-    public void saveDataToFile(ArrayList<Person> list, String dbName){
-        try{
-            FileOutputStream writeData = new FileOutputStream(dbName);
+
+    public void saveBankClientsDataToFile() {
+        ArrayList<BankClient> list =this.getBankClientList();
+        try {
+            FileOutputStream writeData = new FileOutputStream("bankClients.ser");
             ObjectOutputStream writeStream = new ObjectOutputStream(writeData);
             writeStream.writeObject(list);
-           writeStream.flush();
+            writeStream.flush();
             writeStream.close();
 
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public ArrayList<Person> getBankClientListFromDb (){
-        try{
+
+    public void getBankClientListFromFile() {
+        try {
             FileInputStream readData = new FileInputStream("bankClients.ser");
             ObjectInputStream readStream = new ObjectInputStream(readData);
-           ArrayList<Person> list = (ArrayList<Person>) readStream.readObject();
+            ArrayList<BankClient> list = (ArrayList<BankClient>) readStream.readObject();
             readStream.close();
-            return list;
-        }catch (Exception e) {
+            this.bankClientList=list;
+        } catch (Exception e) {
             e.printStackTrace();
-            return null;
+        }
+    }
+    public void addBankStaffToDb(BankStaff bankStaff) {
+        bankStaffList.add(bankStaff);
+    }
+    public ArrayList<BankStaff> getBankStaffList() {
+        return bankStaffList;
+    }
+    public void saveBankStaffDataToFile() {
+        ArrayList<BankStaff> list =this.getBankStaffList();
+        try {
+            FileOutputStream writeData = new FileOutputStream("bankClients.ser");
+            ObjectOutputStream writeStream = new ObjectOutputStream(writeData);
+            writeStream.writeObject(list);
+            writeStream.flush();
+            writeStream.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void getBankStaffListFromFile() {
+        try {
+            FileInputStream readData = new FileInputStream("bankClients.ser");
+            ObjectInputStream readStream = new ObjectInputStream(readData);
+            ArrayList<BankClient> list = (ArrayList<BankClient>) readStream.readObject();
+            readStream.close();
+            this.bankClientList=list;
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
     public SimDataBase() {
-        bankClientList=new ArrayList<Person>();
-        bankStaffList=new ArrayList<BankStaff>();
-        addBankClientToDb(new BankClient("hodei", "ez", "199283213-134", "796535432"));
-        addBankStaffToDb(new BankStaff("hur", "ez", "9762314", "998832141"));
-        addBankStaffToDb(new BankStaff("practicant", "ezdsa", "fds62314", "fda8832141"));
+        bankClientList = new ArrayList<BankClient>();
+        bankStaffList = new ArrayList<BankStaff>();
     }
-
 
 
 }

@@ -1,3 +1,5 @@
+import java.io.Serializable;
+
 /**
  * Created by Hodei Eceiza
  * Date: 9/29/2020
@@ -5,7 +7,7 @@
  * Project: Bankomaten
  * Copyright: MIT
  */
-public abstract class Person {
+public class Person implements Serializable {
     private String name,surname,id,phoneNumber;
 
     public String getName() {

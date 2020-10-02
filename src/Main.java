@@ -8,14 +8,11 @@ public class Main {
 
 
         SimDataBase db = new SimDataBase();
+        db.getBankClientListFromFile();
 
-        db.addBankClientToDb(new BankClient("newone", "newSurname", "id23425", "phone"));
-        db.saveDataToFile(db.getBankClientList(), "bankClients.ser");
+        System.out.println(Tools.findClient(db.getBankClientList(), "hodei").printable());
 
-        ArrayList<Person> bk = db.getBankClientListFromDb();
-
-        for (Object obj : bk)
-            System.out.println(((BankClient) obj).printable());
+        System.out.println(Tools.clientsListToPrint());
     }
 
 }
