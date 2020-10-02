@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -8,7 +9,7 @@ import java.time.LocalDateTime;
  * Project: Bankomaten
  * Copyright: MIT
  */
-public class LoanChanges implements IPrintable{
+public class LoanChanges implements IPrintable, Serializable {
     LocalDateTime changeDate;
     BankStaff bankStaff;
     double interestRate;

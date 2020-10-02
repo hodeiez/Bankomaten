@@ -1,3 +1,5 @@
+import java.io.Serializable;
+
 /**
  * Created by Hodei Eceiza
  * Date: 9/29/2020
@@ -5,7 +7,7 @@
  * Project: Bankomaten
  * Copyright: MIT
  */
-public class BankStaff extends Person implements IPrintable {
+public class BankStaff extends Person implements IPrintable, Serializable {
     private double salary;
 
     public BankStaff(String name, String surname, String id, String phoneNumber) {

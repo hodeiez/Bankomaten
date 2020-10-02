@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.time.Clock;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -12,7 +13,7 @@ import java.util.List;
  * Project: Bankomaten
  * Copyright: MIT
  */
-public class BankLoan implements IChangeInterestRate,IPrintable{
+public class BankLoan implements IChangeInterestRate,IPrintable, Serializable {
     private double interestRate;
     private double amount;
     private BankStaff bankStaff;

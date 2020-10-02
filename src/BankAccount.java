@@ -1,3 +1,5 @@
+import java.io.Serializable;
+
 /**
  * Created by Hodei Eceiza
  * Date: 9/29/2020
@@ -5,7 +7,7 @@
  * Project: Bankomaten
  * Copyright: MIT
  */
-public class BankAccount implements IPrintable{
+public class BankAccount implements IPrintable, Serializable {
     private double interestRate;
     private double balance;
 

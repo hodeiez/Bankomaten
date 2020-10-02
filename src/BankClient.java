@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +9,7 @@ import java.util.List;
  * Project: Bankomaten
  * Copyright: MIT
  */
-public class BankClient extends Person implements IPrintable{
+public class BankClient extends Person implements IPrintable, Serializable {
 
     private List<BankLoan> bankLoanList;
     private List<BankAccount> bankAccountList;
