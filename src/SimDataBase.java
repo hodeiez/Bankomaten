@@ -12,19 +12,19 @@ import java.util.Objects;
  */
 public class SimDataBase {
 
-    private static ArrayList<BankClient> bankClientList;
-    private static ArrayList<BankStaff> bankStaffList;
+    private static ArrayList<BankClient> bankClientList=new ArrayList<>();
+    private static ArrayList<BankStaff> bankStaffList=new ArrayList<>();
 
     public static ArrayList<BankClient> getBankClientList() {
         return bankClientList;
     }
 
-    public void addBankClientToDb(BankClient bankClient) {
+    public static void addBankClientToDb(BankClient bankClient) {
         bankClientList.add(bankClient);
     }
 
-    public void saveBankClientsDataToFile() {
-        ArrayList<BankClient> list =this.getBankClientList();
+    public static void saveBankClientsDataToFile() {
+        ArrayList<BankClient> list =getBankClientList();
         try {
             FileOutputStream writeData = new FileOutputStream("bankClients.ser");
             ObjectOutputStream writeStream = new ObjectOutputStream(writeData);
@@ -37,13 +37,13 @@ public class SimDataBase {
         }
     }
 
-    public void getBankClientListFromFile() {
+    public static void getBankClientListFromFile() {
         try {
             FileInputStream readData = new FileInputStream("bankClients.ser");
             ObjectInputStream readStream = new ObjectInputStream(readData);
             ArrayList<BankClient> list = (ArrayList<BankClient>) readStream.readObject();
             readStream.close();
-            this.bankClientList=list;
+            bankClientList=list;
         } catch (Exception e) {
             e.printStackTrace();
         }

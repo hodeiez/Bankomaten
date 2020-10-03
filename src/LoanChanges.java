@@ -1,6 +1,7 @@
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Created by Hodei Eceiza
@@ -20,7 +21,7 @@ public class LoanChanges implements IPrintable, Serializable {
         this.interestRate=interestRate;
     }
     public String printable(){
-        return "Date: " + changeDate +"\n made by: " + bankStaff.printable() + "\n new InterestRate:" + interestRate;
+        return "Date: " + Tools.printDate(changeDate)+"\n made by: " + bankStaff.printable() + "\n new InterestRate:" + interestRate;
     }
 
 }

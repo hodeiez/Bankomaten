@@ -1,3 +1,5 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +11,8 @@ import java.util.List;
  * Copyright: MIT
  */
 public class Tools {
+
+    //Currency movements tools
     public static double withdrawal(double amountOut, BankClient bankClient, int accountIndex){
         List<BankAccount> list=bankClient.getBankAccountList();
         double balance=list.get(accountIndex).getBalance();
@@ -19,6 +23,13 @@ public class Tools {
         else
             return -1;
     }
+    public static double deposit(double amountIn,BankClient bankClient,int accountIndex){
+        List<BankAccount> list=bankClient.getBankAccountList();
+        double balance=list.get(accountIndex).getBalance();
+        return balance+amountIn;
+
+    }
+    //Database tools
     public static BankClient findClient(ArrayList<BankClient>bankClients,String name){
        for(BankClient bk:bankClients) {
            if (bk.getName().equalsIgnoreCase(name))
@@ -27,9 +38,14 @@ public class Tools {
         System.out.println("NOTHNG FOUND!");
        return null;
     }
+    //Printing tools
+
     public static String clientsListToPrint(){
         for(BankClient bk:SimDataBase.getBankClientList())
             return bk.printable();
         return null;
+    }
+    public static String printDate(LocalDateTime localDateTime){
+        return localDateTime.format(DateTimeFormatter.ofPattern("dd-MM-yy HH:mm:ss"));
     }
 }
