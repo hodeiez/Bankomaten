@@ -14,6 +14,7 @@ public class BankAccount implements IPrintable, Serializable {
     private double interestRate;
     private double balance;
     private LocalDateTime creationDate;
+
     public BankAccount(double interestRate,double balance){
         this.balance=balance;
         this.interestRate=interestRate;

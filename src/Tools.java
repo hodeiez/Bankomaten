@@ -29,6 +29,12 @@ public class Tools {
         return balance+amountIn;
 
     }
+    public static void printAccounts(BankClient bankClient){
+        bankClient.printable();
+    }
+    public static void printHistory(BankClient bankClient){
+
+    }
     //Database tools
     public static BankClient findClient(ArrayList<BankClient>bankClients,String name){
        for(BankClient bk:bankClients) {
@@ -37,6 +43,14 @@ public class Tools {
        }
         System.out.println("NOTHNG FOUND!");
        return null;
+    }
+    public static BankClient SelectClient(ArrayList<BankClient>bankClients,String name){
+        for(BankClient bk:bankClients) {
+            if (bk.getName().equalsIgnoreCase(name))
+                return bk;
+        }
+        System.out.println("NOTHNG FOUND!");
+        return null;
     }
     //Printing tools
 
