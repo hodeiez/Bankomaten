@@ -1,3 +1,8 @@
+package Tools;
+
+import MainClasses.BankAccount;
+import MainClasses.BankClient;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;

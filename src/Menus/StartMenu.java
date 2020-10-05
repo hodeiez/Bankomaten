@@ -1,4 +1,8 @@
-import javax.swing.*;
+package Menus;
+
+import MainClasses.BankClient;
+import Tools.SimDataBase;
+import Tools.*;
 
 /**
  * Created by Hodei Eceiza

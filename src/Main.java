@@ -1,16 +1,15 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import Menus.StartMenu;
+import Tools.SimDataBase;
 
 public class Main {
 
     public static void main(String[] args) {
 
         //Testing the tools
-      //  SimDataBase.addBankClientToDb(new BankClient("hodei","naiz","1348","143"));
-        //SimDataBase.getBankClientList().get(0).addBankAccount(new BankAccount(1.23,2342));
-        //SimDataBase.getBankClientList().get(0).addBankAccount(new BankAccount(3.21,90000));
-       // SimDataBase.saveBankClientsDataToFile();
+       Tools.SimDataBase.addBankClientToDb(new MainClasses.BankClient("hodei","naiz","1348","143"));
+       Tools.SimDataBase.getBankClientList().get(0).addBankAccount(new MainClasses.BankAccount(1.23,2342));
+       Tools.SimDataBase.getBankClientList().get(0).addBankAccount(new MainClasses.BankAccount(3.21,90000));
+       Tools.SimDataBase.saveBankClientsDataToFile();
       SimDataBase.getBankClientListFromFile();
 
 
@@ -18,10 +17,10 @@ public class Main {
 /*
 
         System.out.println("Date of creation of the first account " +
-                Tools.printDate(SimDataBase.getBankClientList().get(0).getBankAccountList().get(0).getCreationDate()));
-        System.out.println(Tools.findClient(SimDataBase.getBankClientList(), "hodei").printable());
+                Tools.Tools.printDate(Tools.SimDataBase.getBankClientList().get(0).getBankAccountList().get(0).getCreationDate()));
+        System.out.println(Tools.Tools.findClient(Tools.SimDataBase.getBankClientList(), "hodei").printable());
 
-        System.out.println(Tools.clientsListToPrint());
+        System.out.println(Tools.Tools.clientsListToPrint());
 */
     }
 
