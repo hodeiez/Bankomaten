@@ -31,16 +31,18 @@ public class BankClient extends Person implements IPrintable, Serializable {
     ///STUFF TO PRINT
     public String getLoanListToString(){
         StringBuilder sb=new StringBuilder();
+        int i=1;
         for(BankLoan bankLoan:bankLoanList){
-            sb.append(bankLoan.printable());
+            sb.append("["+i++ +"]"+bankLoan.printable());
             sb.append("\n");
         }
         return sb.toString();
     }
     public String getAccountListToString(){
         StringBuilder sb=new StringBuilder();
+        int i=1;
         for(BankAccount bankAccount:bankAccountList){
-            sb.append(bankAccount.printable());
+            sb.append("["+i++ +"]" + bankAccount.printable());
             sb.append("\n");
         }
         return sb.toString();

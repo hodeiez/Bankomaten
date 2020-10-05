@@ -7,12 +7,16 @@ import javax.swing.*;
  * Project: Bankomaten
  * Copyright: MIT
  */
-public class StartMenu {
+public class StartMenu implements IPrint{
     //Select client or staff->write pin number->start menu.
+    int input=0;
+
     public StartMenu() {
-        System.out.println("select");
-        int i = 1;
-        switch (i) {
+        toPrint(Messages.WELCOME.text);
+
+        input=UserAnswer.userIntInput();
+        switch (input) {
+
             case 1:
                 clientMenu();
                 break;
@@ -20,11 +24,19 @@ public class StartMenu {
         }
     }
     public void clientMenu (){
-       String name=JOptionPane.showInputDialog("setName");
+        toPrint(Messages.CREDENTIAL.text);
+        String name=UserAnswer.userStringInput();
+
       BankClient bankClient= Tools.findClient(SimDataBase.getBankClientList(),name);
-      MenuClient.menuStart(bankClient);
+      MenuClient mc=new MenuClient();
+      mc.menuStart(bankClient);
     }
     public void staffMenu(){
 
+    }
+
+    @Override
+    public void toPrint(String string) {
+        System.out.println(string);
     }
 }

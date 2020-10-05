@@ -23,10 +23,10 @@ public class Tools {
         else
             return -1;
     }
-    public static double deposit(double amountIn,BankClient bankClient,int accountIndex){
+    public static void deposit(double amountIn,BankClient bankClient,int accountIndex){
         List<BankAccount> list=bankClient.getBankAccountList();
         double balance=list.get(accountIndex).getBalance();
-        return balance+amountIn;
+        list.get(accountIndex).setBalance(balance + amountIn);
 
     }
     public static void printAccounts(BankClient bankClient){
@@ -47,6 +47,14 @@ public class Tools {
     public static BankClient SelectClient(ArrayList<BankClient>bankClients,String name){
         for(BankClient bk:bankClients) {
             if (bk.getName().equalsIgnoreCase(name))
+                return bk;
+        }
+        System.out.println("NOTHNG FOUND!");
+        return null;
+    }
+    public static BankClient SelectClient(ArrayList<BankClient>bankClients,BankClient bankClient){
+        for(BankClient bk:bankClients) {
+            if (bk.getName().equalsIgnoreCase(bankClient.getName()))
                 return bk;
         }
         System.out.println("NOTHNG FOUND!");
