@@ -1,6 +1,7 @@
 package Menus;
 
 import MainClasses.BankClient;
+import MainClasses.BankStaff;
 import Tools.SimDataBase;
 import Tools.*;
 
@@ -36,6 +37,9 @@ public class StartMenu implements IPrint{
       mc.menuStart(bankClient);
     }
     public void staffMenu(){
+        toPrint(Messages.CREDENTIAL.text);
+        String name=UserAnswer.userStringInput();
+        BankStaff bankStaff = Tools.findStaff(SimDataBase.getBankStaffList(),name);
 
     }
 

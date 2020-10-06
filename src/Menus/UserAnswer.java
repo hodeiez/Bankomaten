@@ -10,7 +10,7 @@ import java.util.Scanner;
  * Copyright: MIT
  */
 public class UserAnswer {
-
+//TODO:HANDLE EXCEPTIONS
     public static int userIntInput(){
         Scanner input=new Scanner(System.in);
         return input.nextInt();

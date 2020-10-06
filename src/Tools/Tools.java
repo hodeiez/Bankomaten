@@ -2,6 +2,9 @@ package Tools;
 
 import MainClasses.BankAccount;
 import MainClasses.BankClient;
+import MainClasses.BankStaff;
+import Menus.IPrint;
+import Menus.Messages;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -15,19 +18,21 @@ import java.util.List;
  * Project: Bankomaten
  * Copyright: MIT
  */
-public class Tools {
+public class Tools{
 
+//TODO:EXCEPTIONS HANDLING
     //Currency movements tools
-    public static double withdrawal(double amountOut, BankClient bankClient, int accountIndex){
+    public static void withdrawal(double amountOut, BankClient bankClient, int accountIndex){
         List<BankAccount> list=bankClient.getBankAccountList();
         double balance=list.get(accountIndex).getBalance();
         if(balance-amountOut>=0) {
             list.get(accountIndex).setBalance(balance - amountOut);
-            return balance - amountOut;
         }
         else
-            return -1;
+            stringPrinter(Messages.NOT_ENOUGH.text);
     }
+
+
     public static void deposit(double amountIn,BankClient bankClient,int accountIndex){
         List<BankAccount> list=bankClient.getBankAccountList();
         double balance=list.get(accountIndex).getBalance();
@@ -48,6 +53,14 @@ public class Tools {
        }
         System.out.println("NOTHNG FOUND!");
        return null;
+    }
+    public static BankStaff findStaff(ArrayList<BankStaff>bankClients,String name){
+        for(BankStaff bk:bankClients) {
+            if (bk.getName().equalsIgnoreCase(name))
+                return bk;
+        }
+        System.out.println("NOTHNG FOUND!");
+        return null;
     }
     public static BankClient SelectClient(ArrayList<BankClient>bankClients,String name){
         for(BankClient bk:bankClients) {
@@ -75,4 +88,9 @@ public class Tools {
     public static String printDate(LocalDateTime localDateTime){
         return localDateTime.format(DateTimeFormatter.ofPattern("dd-MM-yy HH:mm:ss"));
     }
+    public static void stringPrinter(String string){
+        System.out.println(string);
+    }
+
+
 }

@@ -33,7 +33,7 @@ public class BankClient extends Person implements IPrintable, Serializable {
     ///STUFF TO PRINT
     public String getLoanListToString(){
         StringBuilder sb=new StringBuilder();
-        int i=1;
+        int i=0;
         for(BankLoan bankLoan:bankLoanList){
             sb.append("["+i++ +"]"+bankLoan.printable());
             sb.append("\n");
@@ -42,7 +42,7 @@ public class BankClient extends Person implements IPrintable, Serializable {
     }
     public String getAccountListToString(){
         StringBuilder sb=new StringBuilder();
-        int i=1;
+        int i=0;
         for(BankAccount bankAccount:bankAccountList){
             sb.append("["+i++ +"]" + bankAccount.printable());
             sb.append("\n");

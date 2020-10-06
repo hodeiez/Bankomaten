@@ -3,6 +3,8 @@ package Menus;
 import MainClasses.*;
 import Tools.*;
 
+import javax.swing.*;
+
 /**
  * Created by Hodei Eceiza
  * Date: 10/3/2020
@@ -10,14 +12,16 @@ import Tools.*;
  * Project: Bankomaten
  * Copyright: MIT
  */
-public class MenuClient implements IPrint{
+public class MenuClient implements IPrint {
     public void menuStart(BankClient bankClient) {
-        toPrint(Messages.CLIENT_MENU.text);
-        int select = UserAnswer.userIntInput();
-        int accountIndex = 0;
-        double moneyAmount = 0;
         boolean goOn = true;
         while (goOn) {
+            toPrint(Messages.CLIENT_MENU.text);
+            int select = UserAnswer.userIntInput();
+            int accountIndex = 0;
+            double moneyAmount = 0;
+
+
             switch (select) {
                 case 1://do deposit
                     toPrint(Messages.DEPOSIT.text + "\n" + bankClient.getAccountListToString());
@@ -25,35 +29,34 @@ public class MenuClient implements IPrint{
                     toPrint(Messages.AMOUNT.text);
                     moneyAmount = UserAnswer.userDoubleInput();
                     Tools.deposit(moneyAmount, bankClient, accountIndex);
-                    toPrint(Tools.SelectClient(SimDataBase.getBankClientList(), bankClient).printable());
+                    toPrint(Tools.SelectClient(SimDataBase.getBankClientList(), bankClient).getAccountListToString());
                     break;
-                case 2:
+                case 2://withdrawal
                     toPrint(Messages.WITHDRAWAL.text + "\n" + bankClient.getAccountListToString());
                     UserAnswer.userIntInput();
                     toPrint(Messages.AMOUNT.text);
                     moneyAmount = UserAnswer.userDoubleInput();
                     Tools.withdrawal(moneyAmount, bankClient, accountIndex);
-                    toPrint(Tools.SelectClient(SimDataBase.getBankClientList(), bankClient).printable());
+                    toPrint(Tools.SelectClient(SimDataBase.getBankClientList(), bankClient).getAccountListToString());
                     break;
                 case 3: //view accounts and loans
-                    bankClient.printable();
+                    toPrint(Tools.SelectClient(SimDataBase.getBankClientList(), bankClient).printable());
                     break;
                 //ADD history option.
             }
             SimDataBase.saveBankClientsDataToFile();
             toPrint(Messages.ASK_FOR.text);
+            goOn = UserAnswer.userStringInput().equals("y");
         }
     }
 
-    public MenuClient(){
+    public MenuClient() {
         //deposit, withdrawal, view accounts and loans, view history.
     }
 
 
-
     @Override
-    public void toPrint(String string){
-        System.out.println(string);
+    public void toPrint(String string) { System.out.println(string);
     }
 
 

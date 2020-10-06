@@ -1,3 +1,7 @@
+import MainClasses.BankAccount;
+import MainClasses.BankLoan;
+import MainClasses.BankStaff;
+import MainClasses.IChangeInterestRate;
 import Menus.StartMenu;
 import Tools.SimDataBase;
 
@@ -9,6 +13,7 @@ public class Main {
        Tools.SimDataBase.addBankClientToDb(new MainClasses.BankClient("hodei","naiz","1348","143"));
        Tools.SimDataBase.getBankClientList().get(0).addBankAccount(new MainClasses.BankAccount(1.23,2342));
        Tools.SimDataBase.getBankClientList().get(0).addBankAccount(new MainClasses.BankAccount(3.21,90000));
+       Tools.SimDataBase.getBankClientList().get(0).addBankLoan(new BankLoan(2.3,100000,new BankStaff("Jerry","lee","12231","9871234")));
        Tools.SimDataBase.saveBankClientsDataToFile();
       SimDataBase.getBankClientListFromFile();
 

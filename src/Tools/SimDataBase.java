@@ -14,12 +14,15 @@ import java.util.ArrayList;
  * Copyright: MIT
  */
 public class SimDataBase {
-
+//TODO: FIX DOUBLED STAFF CLIENTS METHODS AND HANDLE EXCEPTIONS
     private static ArrayList<BankClient> bankClientList=new ArrayList<>();
     private static ArrayList<BankStaff> bankStaffList=new ArrayList<>();
 
     public static ArrayList<BankClient> getBankClientList() {
         return bankClientList;
+    }
+    public static ArrayList<BankStaff> getBankStaffList() {
+        return bankStaffList;
     }
 
     public static void addBankClientToDb(BankClient bankClient) {
@@ -54,9 +57,7 @@ public class SimDataBase {
     public void addBankStaffToDb(BankStaff bankStaff) {
         bankStaffList.add(bankStaff);
     }
-    public ArrayList<BankStaff> getBankStaffList() {
-        return bankStaffList;
-    }
+
     public void saveBankStaffDataToFile() {
         ArrayList<BankStaff> list =this.getBankStaffList();
         try {
