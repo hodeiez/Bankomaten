@@ -19,7 +19,7 @@ public class MenuClient implements IPrint {
             toPrint(Messages.CLIENT_MENU.text);
             int select = UserAnswer.userIntInput();
             int accountIndex = 0;
-            double moneyAmount = 0;
+            double moneyAmount;
 
 
             switch (select) {

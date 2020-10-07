@@ -8,4 +8,5 @@ package Menus;
  * Copyright: MIT
  */
 public class MenuStaff {
+    //addClient,addEmployee,changeLoanInterestRate,addBankAccount,AddLoan
 }
